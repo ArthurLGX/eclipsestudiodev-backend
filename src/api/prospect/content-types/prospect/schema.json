@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prospects",
+  "info": {
+    "singularName": "prospect",
+    "pluralName": "prospects",
+    "displayName": "Prospects"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "prospect_status": {
+      "type": "enumeration",
+      "enum": [
+        "to be contacted",
+        "contacted",
+        "answer"
+      ]
+    },
+    "contacted_date": {
+      "type": "date"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "notes": {
+      "type": "text"
+    },
+    "email": {
+      "type": "email"
+    },
+    "website": {
+      "type": "string"
+    }
+  }
+}

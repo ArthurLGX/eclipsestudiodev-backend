@@ -571,6 +571,43 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiProspectProspect extends Struct.CollectionTypeSchema {
+  collectionName: 'prospects';
+  info: {
+    displayName: 'Prospects';
+    pluralName: 'prospects';
+    singularName: 'prospect';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contacted_date: Schema.Attribute.Date;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    email: Schema.Attribute.Email;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::prospect.prospect'
+    > &
+      Schema.Attribute.Private;
+    notes: Schema.Attribute.Text;
+    prospect_status: Schema.Attribute.Enumeration<
+      ['to be contacted', 'contacted', 'answer']
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String;
+  };
+}
+
 export interface ApiTechnologyTechnology extends Struct.CollectionTypeSchema {
   collectionName: 'technologies';
   info: {
@@ -1122,6 +1159,7 @@ declare module '@strapi/strapi' {
       'api::facture.facture': ApiFactureFacture;
       'api::mentor.mentor': ApiMentorMentor;
       'api::project.project': ApiProjectProject;
+      'api::prospect.prospect': ApiProspectProspect;
       'api::technology.technology': ApiTechnologyTechnology;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
